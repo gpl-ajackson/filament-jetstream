@@ -1,6 +1,6 @@
 {
     "name": "stephenjude/filament-jetstream",
-    "description": "A Laravel starter kit built with Filament inspired by Jetstream.",
+    "description": "A fork of stephenjude/filament-jetstream with customizations for my own use.",
     "keywords": [
         "stephenjude",
         "laravel",
@@ -10,15 +10,16 @@
     ],
     "homepage": "https://github.com/stephenjude/filament-jetstream",
     "support": {
-        "issues": "https://github.com/stephenjude/filament-jetstream/issues",
-        "source": "https://github.com/stephenjude/filament-jetstream"
     },
     "license": "MIT",
     "authors": [
         {
+            "name": "Ash Jackson"
+        },
+        {
             "name": "stephenjude",
             "email": "stephenjudesuccess@gmail.com",
-            "role": "Developer"
+            "role": "Upstream Developer"
         }
     ],
     "require": {
