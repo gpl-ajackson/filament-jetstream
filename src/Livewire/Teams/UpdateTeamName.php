@@ -10,6 +10,7 @@ use Filament\Jetstream\Models\Team;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Log;
 
 class UpdateTeamName extends BaseLivewireComponent
 {
@@ -36,7 +37,8 @@ class UpdateTeamName extends BaseLivewireComponent
                             ->label(__('filament-jetstream::default.form.team_name.label'))
                             ->string()
                             ->maxLength(255)
-                            ->required(),
+                            ->required()
+                            ->unique(ignoreRecord: true),
                         Actions::make([
                             Action::make('save')
                                 ->label(__('filament-jetstream::default.action.save.label'))
@@ -57,13 +59,29 @@ class UpdateTeamName extends BaseLivewireComponent
             return;
         }
 
+        $slug = str($this->data['name'])->slug();
+        if (Team::where('slug', $slug)
+            ->whereNot('id', $this->team->id)
+            ->exists()) {
+            Log::debug('Team slug already exists!', [
+                $slug,
+                'team_id' => $this->team->id,
+            ]);
+
+            $this->sendNotification('Cannot Save', 'Cannot use this team name as it is too similar to an existing team. Please try an alternative.', 'danger');
+            return;
+        }
+
         $data = $this->form->getState();
 
         $team->forceFill([
             'name' => $data['name'],
+            'slug' => $slug,
         ])->save();
 
         $this->sendNotification();
+
+        $this->redirect(route('filament.app.tenant.profile', $team), true);
     }
 
     public function render()

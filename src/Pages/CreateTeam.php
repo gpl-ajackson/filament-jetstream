@@ -2,9 +2,12 @@
 
 namespace Filament\Jetstream\Pages;
 
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Jetstream\Events\AddingTeam;
+use Filament\Jetstream\Models\Team;
+use Filament\Notifications\Notification;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +32,18 @@ class CreateTeam extends RegisterTenant
 
         if ($user === null) {
             throw new Exception(__('The authenticated user object must be a filament auth model!'));
+        }
+
+        $slug = str($this->data['name'])->slug();
+        if (Team::where('slug', $slug)
+            ->exists()) {
+            Notification::make()
+                ->title('Cannot Save')
+                ->body('Cannot use this team name as it is too similar to an existing team. Please try an alternative.')
+                ->danger()
+                ->send();
+
+            throw new Exception('Cannot Save');
         }
 
         AddingTeam::dispatch($user);

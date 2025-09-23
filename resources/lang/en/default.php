@@ -67,6 +67,7 @@ return [
 
         'team_name' => [
             'label' => 'Team Name',
+            'default_name' => 'My Team',
         ],
 
         'or' => [

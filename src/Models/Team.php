@@ -22,6 +22,7 @@ class Team extends Model
     protected $fillable = [
         'name',
         'personal_team',
+        'slug',
     ];
 
     /**
