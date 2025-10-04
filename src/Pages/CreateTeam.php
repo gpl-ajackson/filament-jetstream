@@ -52,6 +52,7 @@ class CreateTeam extends RegisterTenant
             $team = $user->ownedTeams()->create([
                 'name' => $data['name'],
                 'personal_team' => ! $user->currentTeam,
+                'slug' => $slug,
             ])
         );
 
