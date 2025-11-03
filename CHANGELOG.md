@@ -2,6 +2,41 @@
 
 All notable changes to `filament-jetstream` will be documented in this file.
 
+## 1.2.11 - 2025-10-13
+
+### What's Changed
+
+* chore(phpstan): update configuration to use supported methods only by @MominAlZaraa in https://github.com/stephenjude/filament-jetstream/pull/77
+* chore(phpstan): replace PHPStan with Larastan for enhanced built-in features by @MominAlZaraa in https://github.com/stephenjude/filament-jetstream/pull/78
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/stephenjude/filament-jetstream/pull/83
+* fixed Larastan dev dependency by @stephenjude in https://github.com/stephenjude/filament-jetstream/pull/84
+
+**Full Changelog**: https://github.com/stephenjude/filament-jetstream/compare/1.2.10...1.2.11
+
+## 1.2.10 - 2025-10-10
+
+### What's Changed
+
+* Added phpstan for code editing to fix action phpstan.yml action by @MominAlZaraa in https://github.com/stephenjude/filament-jetstream/pull/76
+
+**Full Changelog**: https://github.com/stephenjude/filament-jetstream/compare/1.2.9...1.2.10
+
+## 1.2.9 - 2025-10-05
+
+### What's Changed
+
+* Fix: DeleteAccount flow & replace deprecated modal form usage by @momin-00 in https://github.com/stephenjude/filament-jetstream/pull/75
+
+**Full Changelog**: https://github.com/stephenjude/filament-jetstream/compare/1.2.6...1.2.9
+
+## 1.2.8 - 2025-10-01
+
+### What's Changed
+
+* Revert: Added tenant slug for friendly URL #71
+
+**Full Changelog**: https://github.com/stephenjude/filament-jetstream/compare/1.2.5...1.2.8
+
 ## 1.2.1 - 2025-09-01
 
 ### What's Changed
