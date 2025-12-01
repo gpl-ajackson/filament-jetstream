@@ -48,7 +48,7 @@ class DeleteAccount extends BaseLivewireComponent
                                 ])
                                 ->action(fn (array $data) => $this->deleteAccount())
                                 ->successNotificationTitle(__('filament-jetstream::default.action.delete_account.success_title'))
-                                ->successRedirectUrl(route('login')),
+                                ->successRedirectUrl(filament()->getLoginUrl()),
                         ]),
                     ]),
             ]);
