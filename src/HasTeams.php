@@ -179,9 +179,25 @@ trait HasTeams
      * Get the user's permissions for the given team.
      *
      * @param  mixed  $team
+     * @return bool
+     */
+    public function hasAnyTeamRole($team, array $roles)
+    {
+        foreach ($roles as $role) {
+            if ($this->hasTeamRole($team, $role)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the user's permissions for the given team.
+     * @param $team
      * @return array
      */
-    public function teamPermissions($team)
+    public function teamPermissions($team): array
     {
         if ($this->ownsTeam($team)) {
             return ['*'];
