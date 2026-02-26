@@ -39,7 +39,7 @@ class Role implements JsonSerializable
     public static ?array $rolesAndPermissions = [
         [
             'key' => 'admin',
-            'name' => 'Administrator',
+            'name' => 'System Administrator',
             'description' => 'Administrator users can perform any action.',
             'permissions' => [
                 'create',
@@ -49,13 +49,50 @@ class Role implements JsonSerializable
             ],
         ],
         [
-            'key' => 'editor',
-            'name' => 'Editor',
-            'description' => 'Editor users have the ability to read, create, and update.',
+            'key' => 'customer-editor',
+            'name' => 'Customer Editor',
+            'description' => 'Customer Editor users have the ability to read and update data.',
             'permissions' => [
                 'read',
                 'create',
                 'update',
+            ],
+        ],
+        [
+            'key' => 'customer-viewer',
+            'name' => 'Customer Viewer',
+            'description' => 'Customer viewers can only read data.',
+            'permissions' => [
+                'read',
+            ],
+        ],
+        [
+            'key' => 'staff-admin',
+            'name' => 'Staff Admin',
+            'description' => 'Staff Admins can manage their own teams and users.',
+            'permissions' => [
+                'create',
+                'read',
+                'update',
+                'delete',
+            ],
+        ],
+        [
+            'key' => 'staff-editor',
+            'name' => 'Staff Editor',
+            'description' => 'Staff Editors users have the ability to read and update data.',
+            'permissions' => [
+                'read',
+                'create',
+                'update',
+            ],
+        ],
+        [
+            'key' => 'staff-viewer',
+            'name' => 'Staff Viewer',
+            'description' => 'Staff viewers can only read data.',
+            'permissions' => [
+                'read',
             ],
         ],
     ];
