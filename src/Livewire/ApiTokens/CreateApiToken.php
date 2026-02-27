@@ -16,6 +16,7 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\HtmlString;
 use Laravel\Sanctum\PersonalAccessToken;
 use Livewire\Attributes\On;
@@ -92,18 +93,12 @@ class CreateApiToken extends BaseLivewireComponent
 
         Notification::make('showApiToken')
             ->success()
-            ->body(new HtmlString("API Token: <span>{$plainTextToken}</span><br>Please copy the token manually."))
+            ->body(new HtmlString("API Token: <span>{$plainTextToken}</span>"))
             ->title(__('filament-jetstream::default.notification.create_token.success.message'))
-            ->actions([
-                Action::make('copy_token_confirm')
-                    ->label(__('filament-jetstream::default.action.copy_token_confirm.label'))
-                    ->icon('heroicon-o-check-circle')
-                    ->dispatch('token-copied', ['token' => $plainTextToken]),
-            ])
-            ->persistent()
-            ->send();
+            ->sendToDatabase(Auth::user());
 
-        $this->redirect(Jetstream::plugin()?->getApiTokenUrl(Filament::getCurrentPanel()));
+        $this->dispatch('open-modal', id: 'database-notifications');
+        $this->dispatch('api-tokens-refresh');
     }
 
     public function render()

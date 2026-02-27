@@ -13,6 +13,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Laravel\Sanctum\PersonalAccessToken;
+use Livewire\Attributes\On;
 
 class ManageApiTokens extends BaseLivewireComponent implements HasTable
 {
@@ -70,5 +71,11 @@ class ManageApiTokens extends BaseLivewireComponent implements HasTable
     public function render()
     {
         return view('filament-jetstream::livewire.api-tokens.manage-api-tokens');
+    }
+
+    #[On('api-tokens-refresh')]
+    public function onTokenCopied(): void
+    {
+        $this->resetTable();
     }
 }

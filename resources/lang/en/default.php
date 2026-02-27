@@ -113,7 +113,7 @@ return [
         'create_token' => [
 
             'success' => [
-                'message' => 'Please copy your new API token. For your security, it won\'t be shown again.',
+                'message' => 'Please copy your new API token. For your security, you will not be able to show this message again once cleared.',
             ],
 
             'error' => [
